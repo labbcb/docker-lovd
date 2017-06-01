@@ -18,9 +18,14 @@ services:
      image: welliton/lovd:latest
      ports:
        - "80:80"
-     volumes:
-       - ./config.ini.php:/var/www/html/config.ini.php
      restart: always
+     environment:
+       LOVD_DB_DRIVER: mysql
+       LOVD_DB_HOST: db
+       LOVD_DB_NAME: lovd
+       LOVD_DB_USER: lovd
+       LOVD_DB_PASSWORD: lovd
+       LOVD_TABLE_PREFIX: lovd
 
 volumes:
     db_data:
