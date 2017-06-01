@@ -1,12 +1,11 @@
 # Docker image for LOVD server
 
-## Building image
+[Leiden Open Variation Database (LOVD)](http://www.lovd.nl/) provides a flexible, freely available tool for Gene-centered collection and display of DNA variations.
+LOVD version 3.0 extends this idea to also provide patient-centered data storage and storage of NGS data, even of variants outside of genes.
 
-``` bash
-git clone git@github.com:labbcb/docker-lovd.git
-cd docker-lovd
-docker image build --tag welliton/lovd .
-```
+This Docker image provides stable LOVD installation with Apache 2 web server, PHP.
+Database management system (such as MySQL) should be in another Docker container.
+The [docker-compose](https://docs.docker.com/compose/) tool helps deploying all required container (see `docker-compose.yml` file).
 
 ## Installing docker-compose
 
@@ -51,3 +50,10 @@ To stop containers and delete volumes run.
 docker-compose down --volumes
 ```
 
+## Building image
+
+``` bash
+git clone git@github.com:labbcb/docker-lovd.git
+cd docker-lovd
+docker image build --tag welliton/lovd .
+```
