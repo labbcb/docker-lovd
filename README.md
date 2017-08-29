@@ -32,6 +32,7 @@ For `lovd` container:
 - `LOVD_DB_PASSWORD` password for LOVD MySql user (same of `MYSQL_PASSWORD`)
 - `LOVD_DB_NAME` name of database for LOVD (same of `MYSQL_DATABASE`)
 - `LOVD_TABLE_PREFIX` prefix of LOVD tables (default is `lovd`)
+- `LOVD_BASEDIR` accept access to LOVD via custom base URL for multiple sites
 
 ```
 docker-compose up -d

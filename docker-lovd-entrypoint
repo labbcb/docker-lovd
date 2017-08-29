@@ -57,4 +57,9 @@ table_prefix = ${LOVD_TABLE_PREFIX}
 
 EOF
 
+
+if [ ! -z "$LOVD_BASEDIR" ]; then
+  ln -s /var/www/html /var/www/html/${LOVD_BASEDIR}
+fi
+
 exec "$@"
