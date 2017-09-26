@@ -2,17 +2,19 @@ version: '3'
 
 services:
    db:
+     container_name: db
      image: mysql:5.6
      volumes:
        - db_data:/var/lib/mysql
      restart: always
      environment:
-       MYSQL_ROOT_PASSWORD: root
+       MYSQL_RANDOM_ROOT_PASSWORD: "yes"
        MYSQL_DATABASE: lovd
-       MYSQL_USER: lovd
-       MYSQL_PASSWORD: lovd
+       MYSQL_USER: ${MYSQL_USER}
+       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
 
    lovd:
+     container_name: lovd
      depends_on:
        - db
      image: welliton/lovd:latest
@@ -23,8 +25,8 @@ services:
        LOVD_DB_DRIVER: mysql
        LOVD_DB_HOST: db
        LOVD_DB_NAME: lovd
-       LOVD_DB_USER: lovd
-       LOVD_DB_PASSWORD: lovd
+       LOVD_DB_USER: ${MYSQL_USER}
+       LOVD_DB_PASSWORD: ${MYSQL_PASSWORD}
        LOVD_TABLE_PREFIX: lovd
 
 volumes:

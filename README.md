@@ -21,7 +21,6 @@ It will work with no modification for testing purpose.
 
 For `db` container:
 
-- `MYSQL_ROOT_PASSWORD` password for MySQL root user
 - `MYSQL_DATABASE` name of database for LOVD
 - `MYSQL_USER` user for LOVD
 - `MYSQL_PASSWORD` password for LOVD MySQL user
@@ -33,6 +32,9 @@ For `lovd` container:
 - `LOVD_DB_NAME` name of database for LOVD (same of `MYSQL_DATABASE`)
 - `LOVD_TABLE_PREFIX` prefix of LOVD tables (default is `lovd`)
 - `LOVD_BASEDIR` accept access to LOVD via custom base URL for multiple sites
+
+The `MYSQL_USER` and `MYSQL_PASSWORD` are defined in `.env` file.
+This file should be owned by root user wihout access by others.
 
 ```
 docker-compose up -d

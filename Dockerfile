@@ -4,7 +4,7 @@ MAINTAINER Welliton Souza <well309@gmail.com>
 
 WORKDIR /var/www/html/
 
-ENV LOVD_VERSION 3.0-17
+ENV LOVD_VERSION 3.0-19
 
 RUN apt-get update && apt-get install --yes --no-install-recommends \
     wget \
