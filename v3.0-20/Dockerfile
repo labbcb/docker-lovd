@@ -1,4 +1,4 @@
-FROM php:apache
+FROM php:7.2.2-apache-stretch
 
 LABEL maintainer="well309@gmail.com"
 
@@ -6,9 +6,9 @@ WORKDIR /var/www/html/
 
 ENV LOVD_VERSION 3.0-20
 
-RUN apt-get update && apt-get install --yes --no-install-recommends \
+RUN apt-get update && \
+  apt-get install --yes --no-install-recommends \
     wget \
-    php-soap \
     libxml2-dev \
   && rm -rf /var/lib/apt/lists/* && \
   docker-php-ext-install pdo pdo_mysql soap && \
