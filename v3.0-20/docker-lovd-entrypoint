@@ -1,0 +1,65 @@
+#!/bin/bash
+set -e
+
+if [ -z "$LOVD_DB_DRIVER" ]; then
+  export LOVD_DB_DRIVER="mysql"
+fi
+
+if [ -z "$LOVD_DB_HOST" ]; then
+  export LOVD_DB_HOST="localhost"
+fi
+
+if [ -z "$LOVD_TABLE_PREFIX" ]; then
+  export LOVD_TABLE_PREFIX="lovd"
+fi
+
+cat << EOF > ./config.ini.php
+                                <?php exit(); ?>
+#################### DO NOT MODIFY OR REMOVE THE LINE ABOVE ####################
+################################################################################
+#                              LOVD settings file                              #
+#                                    v. 3.0                                    #
+################################################################################
+#                                                                              #
+# Lines starting with # are comments and ignored by LOVD, as are empty lines.  #
+#                                                                              #
+# Default values of directives are mentioned when applicable. To keep the      #
+# default settings, leave the line untouched.                                  #
+#                                                                              #
+################################################################################
+
+
+
+[database]
+
+# Database driver. Defaults to 'mysql'.
+driver = ${LOVD_DB_DRIVER}
+
+# Database host. Defaults to 'localhost'.
+#
+hostname = ${LOVD_DB_HOST}
+
+# Database username and password (required for MySQL).
+#
+username = ${LOVD_DB_USER}
+password = ${LOVD_DB_PASSWORD}
+
+# Database name (required). When using SQLite, specify the filename here.
+#
+database = ${LOVD_DB_NAME}
+
+# This is for the table prefixes; if you wish to install more than one LOVD
+# system per database, use different directories for these installations and
+# change the setting below to a unique value.
+# Please use alphanumeric characters only. Defaults to 'lovd'.
+#
+table_prefix = ${LOVD_TABLE_PREFIX}
+
+EOF
+
+
+if [ ! -z "$LOVD_BASEDIR" ]; then
+  ln -s /var/www/html /var/www/html/${LOVD_BASEDIR}
+fi
+
+exec "$@"
