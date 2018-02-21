@@ -4,7 +4,7 @@ LABEL maintainer="well309@gmail.com"
 
 WORKDIR /var/www/html/
 
-ENV LOVD_VERSION 3.0-20
+ENV LOVD_VERSION 3.0-20a
 
 RUN apt-get update && \
   apt-get install --yes --no-install-recommends \
